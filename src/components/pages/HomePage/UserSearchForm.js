@@ -39,7 +39,7 @@ class SearchUserForm extends Component {
     const {value: searchValue} = this.state;
     
     return (
-      <form className={'search-user-form'}
+      <form className={'usb-form'}
             onSubmit={this.onSubmit}>
         <Row noGutters
              className={''}>
@@ -52,7 +52,7 @@ class SearchUserForm extends Component {
           </Col>
           <Col className={'col-4'}>
             <button type="submit"
-                    className="btn btn-primary mb-2"> Search </button>
+                    className="btn btn-primary"> Search </button>
           </Col>
         </Row>
       </form>

@@ -14,7 +14,6 @@ export function searchUsers(userName = '') {
   
   return (dispatch) => {
     request.then((res) => {
-      console.log('ffffff');
       dispatch({
         type: SEARCH_USERS,
         payload: res

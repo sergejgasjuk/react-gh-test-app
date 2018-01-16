@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { searchUsers, resetSearchUsers } from 'actions';
 
-import SearchUserForm from './SearchUserForm';
-import SearchUserResults from './SearchUserResults';
+import UserSearchForm from './UserSearchForm';
+import UserSearchResult from './UserSearchResult';
 
 
 class SearchUserContainer extends Component {
@@ -13,14 +13,16 @@ class SearchUserContainer extends Component {
     
     this.state = {
       searchKey: '',
-      isVisibleResult: false
+      isVisibleResult: true
     };
     
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleSearchValChange = this.handleSearchValChange.bind(this);
     this.handleSearchValClear = this.handleSearchValClear.bind(this);
   }
-  
+  componentDidMount() {
+    this.props.searchUsers('tom');
+  }
   handleSearchSubmit(value) {
     if (!value) {
       return;
@@ -56,19 +58,18 @@ class SearchUserContainer extends Component {
     const {ghUsers} = this.props;
     
     return (
-      <div className={'search-users'}>
-        <h2>Search GitHub Users: </h2>
-        <SearchUserForm
+      <div className={'user-search-box'}>
+        <h2>Search GitHub Users </h2>
+        
+        <UserSearchForm
           onValueChange={this.handleSearchValChange}
           onInputClear={this.handleSearchValClear}
           onSubmit={this.handleSearchSubmit}
         />
         
-        {ghUsers.items.length}
-        
         {isVisibleResult &&
-         <SearchUserResults searchKey={searchKey}
-                            users={ghUsers}
+         <UserSearchResult searchKey={searchKey}
+                           users={ghUsers}
          />
         }
       </div>
