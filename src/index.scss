@@ -2,5 +2,10 @@
   Main Entry Point
  */
 
+// config
+@import './styles/config/_variables';
+@import './styles/config/_utils';
 
+// base rules
+@import './styles/_base';
 

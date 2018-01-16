@@ -1,10 +1,14 @@
 import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
 
 const App = () => {
   return (
-    <div>
-      dfdfd
-    </div>
+    <Switch>
+      <Route exact path='/' component={HomePage} />
+      {/*<Route path="*" component={NoMatch} />*/}
+    </Switch>
   );
 };
 

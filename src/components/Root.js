@@ -9,7 +9,9 @@ import App from './App';
 const Root = ({store, history}) => {
   return (
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   );
 };
