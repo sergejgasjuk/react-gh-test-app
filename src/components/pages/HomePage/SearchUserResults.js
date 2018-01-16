@@ -12,14 +12,37 @@ const ResultTitle = ({searchKey}) => {
   );
 };
 
+const ResultsList = ({users}) => {
+  return (
+    <div className={'search-result-list'}>
+      {users.map((item, index) => {
+        return <ResultsItem key={index}
+                            item={item}/>
+      })}
+    </div>
+  );
+};
+
+const ResultsItem = ({item}) => {
+  return (
+    <div className={'search-result-item'}>
+      
+    </div>
+  );
+};
+
 const SearchUser = (props) => {
   const {
     searchKey,
-    isNoData
+    users,
   } = props;
   
-  function renderTitle() {
-    if (isNoData) {
+  const {items} = users;
+  
+  const hasData = items.length;
+  
+  function renderTitle(hasData, searchKey) {
+    if (!hasData && searchKey) {
       return <NoDataTitle searchKey={searchKey} />;
     }
     
@@ -28,8 +51,11 @@ const SearchUser = (props) => {
   
   return (
     <div className={'search-users'}>
-      {renderTitle()}
+      {renderTitle(hasData, searchKey)}
       
+      {hasData &&
+        <ResultsList users={items}/>
+      }
     </div>
   );
 };

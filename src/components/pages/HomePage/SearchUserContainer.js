@@ -30,7 +30,7 @@ class SearchUserContainer extends Component {
     
     this.setState({
       searchKey: value,
-      isVisibleResult: !!(value)
+      isVisibleResult: !!(value && value.length)
     });
   }
   
@@ -40,8 +40,11 @@ class SearchUserContainer extends Component {
   
   handleSearchValClear() {
     this.setState({
+      searchKey: '',
       isVisibleResult: false
     });
+  
+    this.props.resetSearchUsers();
   }
   
   componentWillUnmount() {
@@ -50,11 +53,7 @@ class SearchUserContainer extends Component {
   
   render() {
     const {searchKey, isVisibleResult} = this.state;
-    console.log(this.props);
-    const {ghUsers: users} = this.props;
-    
-    const isNoData = (searchKey && !users.count);
-    console.log(searchKey);
+    const {ghUsers} = this.props;
     
     return (
       <div className={'search-users'}>
@@ -65,9 +64,11 @@ class SearchUserContainer extends Component {
           onSubmit={this.handleSearchSubmit}
         />
         
+        {ghUsers.items.length}
+        
         {isVisibleResult &&
          <SearchUserResults searchKey={searchKey}
-                            isNoData={isNoData}
+                            users={ghUsers}
          />
         }
       </div>
@@ -75,11 +76,11 @@ class SearchUserContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
   return {
     ghUsers: state.ghUsers
   }
-};
+}
 
 export default connect(mapStateToProps, {
   searchUsers,

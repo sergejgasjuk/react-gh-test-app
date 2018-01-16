@@ -2,14 +2,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import ReduxPromise from 'redux-promise';
+//import ReduxPromise from 'redux-promise';
 import createHistory from 'history/createBrowserHistory';
 
 import rootReducer from './reducers';
 
 const history = createHistory();
 const router = routerMiddleware(history);
-const enhancer = applyMiddleware(thunk, ReduxPromise, router);
+const enhancer = applyMiddleware(thunk, router);
 const persistedState = {};
 
 function configureStore() {
