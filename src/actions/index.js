@@ -4,6 +4,7 @@ import {
   SEARCH_USERS,
   RESET_SEARCH_USERS,
   FETCH_USER,
+  FETCH_USER_REPOS,
   RESET_USER
 } from 'constants/actionTypes';
 
@@ -38,6 +39,20 @@ export function fetchUser(name) {
     request.then((res) => {
       dispatch({
         type: FETCH_USER,
+        payload: res
+      });
+    });
+  }
+}
+
+export function fetchUserRepos(name) {
+  const url = `${ROOT_URL}/users/${name}/repos`;
+  const request = axios.get(url);
+  
+  return (dispatch) => {
+    request.then((res) => {
+      dispatch({
+        type: FETCH_USER_REPOS,
         payload: res
       });
     });

@@ -12,16 +12,14 @@ class SearchUserContainer extends Component {
     super(props);
     
     this.state = {
-      searchKey: 'f'
+      searchKey: ''
     };
     
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleSearchValChange = this.handleSearchValChange.bind(this);
     this.handleSearchValClear = this.handleSearchValClear.bind(this);
   }
-  componentDidMount() {
-    this.props.searchUsers('tom');
-  }
+
   handleSearchSubmit(value) {
     if (!value) {
       return;
