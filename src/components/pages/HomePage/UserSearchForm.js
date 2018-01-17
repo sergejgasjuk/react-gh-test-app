@@ -44,15 +44,15 @@ class SearchUserForm extends Component {
         <Row noGutters
              className={''}>
           <Col className={'col-8'}>
-            <input type="text"
-                   className="form-control"
+            <input type='text'
+                   className={'form-control'}
                    value={searchValue}
                    onChange={this.onChange}
-                   placeholder="some github user name.." />
+                   placeholder='some github user name..' />
           </Col>
           <Col className={'col-4'}>
-            <button type="submit"
-                    className="btn btn-primary"> Search </button>
+            <button type={'submit'}
+                    className={'btn btn-primary'}> Search </button>
           </Col>
         </Row>
       </form>

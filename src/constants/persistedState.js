@@ -6,7 +6,7 @@ const persistedState = {
   
   ghSingleUser: {
     user: null,
-    repos: null
+    repos: []
   }
 };
 

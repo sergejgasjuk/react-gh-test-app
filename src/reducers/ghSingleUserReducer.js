@@ -15,7 +15,7 @@ export default function ghUsersReducer(state = persistedState.ghSingleUser, acti
       const newRepos = action.payload.data;
       const repos = state.repos || [];
 
-      return Object.assign({}, state, {repos: [...repos, ...newRepos] });
+      return Object.assign({}, state, {repos: [...newRepos] });
     case RESET_USER:
       return Object.assign({}, state, {user: null, repos: null});
     default:

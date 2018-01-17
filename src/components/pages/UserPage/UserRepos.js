@@ -24,7 +24,7 @@ class UserRepos extends Component {
   componentDidMount() {
     const {userLogin, fetchUserRepos, userRepos} = this.props;
     
-    if (userLogin && (!userRepos)) {
+    if (userLogin && (!userRepos || !userRepos.length)) {
       fetchUserRepos(userLogin);
     }
   }
@@ -47,7 +47,7 @@ class UserRepos extends Component {
     return (
       <tbody>
       {data.map((row, idx) => {
-        return <tr key={idx}> {this.renderColumns(row)} </tr>
+        return (<tr key={idx}>{this.renderColumns(row)}</tr>)
       })}
       </tbody>
     )

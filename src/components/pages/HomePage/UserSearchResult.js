@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
 
 const ResultList = ({users}) => {
-  console.log(users);
-  
   return (
     <div className={'usb-resultlist list-group'}>
       {users.map((item, index) => {
