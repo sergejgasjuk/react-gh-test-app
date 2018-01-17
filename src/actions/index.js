@@ -2,7 +2,9 @@ import axios from 'axios';
 
 import {
   SEARCH_USERS,
-  RESET_SEARCH_USERS
+  RESET_SEARCH_USERS,
+  FETCH_USER,
+  RESET_USER
 } from 'constants/actionTypes';
 
 
@@ -25,5 +27,25 @@ export function searchUsers(userName = '') {
 export function resetSearchUsers() {
   return {
     type: RESET_SEARCH_USERS
+  }
+}
+
+export function fetchUser(name) {
+  const url = `${ROOT_URL}/users/${name}`;
+  const request = axios.get(url);
+  
+  return (dispatch) => {
+    request.then((res) => {
+      dispatch({
+        type: FETCH_USER,
+        payload: res
+      });
+    });
+  }
+}
+
+export function resetUser() {
+  return {
+    type: RESET_USER
   }
 }

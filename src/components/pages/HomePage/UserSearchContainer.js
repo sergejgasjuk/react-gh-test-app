@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import { searchUsers, resetSearchUsers } from 'actions';
+import {searchUsers, resetSearchUsers} from 'actions';
 
 import UserSearchForm from './UserSearchForm';
 import UserSearchResult from './UserSearchResult';
@@ -12,8 +12,7 @@ class SearchUserContainer extends Component {
     super(props);
     
     this.state = {
-      searchKey: '',
-      isVisibleResult: true
+      searchKey: 'f'
     };
     
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
@@ -31,8 +30,7 @@ class SearchUserContainer extends Component {
     this.props.searchUsers(value);
     
     this.setState({
-      searchKey: value,
-      isVisibleResult: !!(value && value.length)
+      searchKey: value
     });
   }
   
@@ -43,7 +41,6 @@ class SearchUserContainer extends Component {
   handleSearchValClear() {
     this.setState({
       searchKey: '',
-      isVisibleResult: false
     });
   
     this.props.resetSearchUsers();
@@ -54,12 +51,12 @@ class SearchUserContainer extends Component {
   }
   
   render() {
-    const {searchKey, isVisibleResult} = this.state;
+    const {searchKey} = this.state;
     const {ghUsers} = this.props;
     
     return (
       <div className={'user-search-box'}>
-        <h2>Search GitHub Users </h2>
+        <h2>Search GitHub Users</h2>
         
         <UserSearchForm
           onValueChange={this.handleSearchValChange}
@@ -67,7 +64,7 @@ class SearchUserContainer extends Component {
           onSubmit={this.handleSearchSubmit}
         />
         
-        {isVisibleResult &&
+        {searchKey &&
          <UserSearchResult searchKey={searchKey}
                            users={ghUsers}
          />

@@ -11,8 +11,9 @@ export default function ghUsersReducer(state = persistedState.ghUsers, action) {
       const {items, total_count: count} = newData;
       
       return Object.assign({}, state, {items, count});
+      
     case RESET_SEARCH_USERS:
-      return Object.assign({}, state, persistedState.ghUsers);
+      return Object.assign({}, state, {items: null, count: null});
     default:
       return state;
   }

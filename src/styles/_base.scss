@@ -37,7 +37,8 @@ img {
   align-items: center;
 
   > .avatar {
-    width: 30px;
+    width: 35px;
+    border-radius: 100%;
     margin-right: 15px;
     object-fit: contain;
   }
@@ -45,4 +46,38 @@ img {
   > .login {
 
   }
+}
+
+.gh-user {
+  display: flex;
+  align-items: top;
+  margin: 0 0 35px;
+}
+
+.gh-user-avatar {
+  width: 75px;
+  border-radius: 100%;
+  margin-right: 30px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.gh-user-info {
+  flex-grow: 1;
+  padding: 10px 0 0 0;
+}
+
+.gh-user-name {
+  display: flex;
+  align-items: baseline;
+
+  > .name {
+    margin-right: 15px;
+  }
+
+  > .gh-link {}
+}
+
+.user-body {
+  padding: 0 10px;
 }

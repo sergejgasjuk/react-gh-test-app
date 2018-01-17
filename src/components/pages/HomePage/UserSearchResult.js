@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 
 const ResultList = ({users}) => {
   console.log(users);
@@ -7,22 +8,24 @@ const ResultList = ({users}) => {
     <div className={'usb-resultlist list-group'}>
       {users.map((item, index) => {
         return <ResultItem key={index}
-                           item={item}
+                           user={item}
         />
       })}
     </div>
   );
 };
 
-const ResultItem = ({item}) => {
+const ResultItem = ({user}) => {
   return (
     <div className={'usb-result-item list-group-item'}>
       <div className={'avatar'}>
-        <img src={item.avatar_url} alt={item.login}/>
+        <img src={user.avatar_url} alt={user.login}/>
       </div>
       
       <div className={'login font-weight-bold'}>
-        {item.login}
+        <NavLink to={`/user/${user.login}`}>
+          {user.login}
+        </NavLink>
       </div>
     </div>
   );
